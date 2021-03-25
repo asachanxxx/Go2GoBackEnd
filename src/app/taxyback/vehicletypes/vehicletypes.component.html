@@ -1,0 +1,112 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-8 col-sm-12">
+              <h4>Vehicle Types</h4>
+            </div>
+            <div class="col-md-4 col-sm-12 float-right">
+              <button class="btn btn-sm btn-info float-right" (click)="retrieveUsers()">
+                Add new V-Types
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="list row">
+
+            <div class="col-md-4 col-sm-12">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let user of vtypes; let i = index" [class.active]="i == currentIndex"
+                  (click)="click_on(user, i)">
+
+                  <div>
+                    <h5> <strong class="text-primary">{{ user.name }}</strong></h5>
+                  </div>
+                  <small class="mr-2"><i class="fa fa-asterisk  mr-1" aria-hidden="true"></i>  Price For KM </small> <span class="mr-3"><strong class="text-danger">LKR {{user.perKm}}</strong></span>
+                  <small class="mr-2"><i class="fa fa-asterisk  mr-1" aria-hidden="true"></i>Base Fare </small> <span class="mr-3"><strong class="text-danger">LKR {{user.baseFire}}</strong></span>
+                  <small class="mr-2"><i class="fa fa-asterisk  mr-1" aria-hidden="true"></i>Time Fare </small> <span class="mr-3"><strong class="text-danger">LKR {{user.minutePrice}}</strong></span>
+
+
+
+                </li>
+              </ul>
+            </div>
+
+
+            <div class="col-md-8 col-sm-12">
+              <div class="row">
+
+
+
+                <div class="col-md-6 ">
+
+                  <form [formGroup]="myForm" (ngSubmit)="update()">
+                  <div class="card mx-4">
+                    <div class="card-body p-4">
+                        <p class="text-primary">Create Vehicle Types</p>
+
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                          </div>
+                          <input type="text"  formControlName="displayName" class="form-control" placeholder="Display Name" autocomplete="new-password" required>
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                          </div>
+                          <input type="text" formControlName="vtype" class="form-control" placeholder="Vehicle types" autocomplete="username">
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                          </div>
+                          <input type="number" formControlName="baseFire" class="form-control" placeholder="Base Fare" autocomplete="email" >
+                        </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                          </div>
+                          <input type="number" formControlName="perKm" class="form-control" placeholder="Price Per KM" autocomplete="new-password" >
+                        </div>
+
+                        <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                          </div>
+                          <input type="number"  formControlName="timeFire" class="form-control" placeholder="Price Per Minute" autocomplete="new-password" required>
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="card-footer p-4">
+                      <div class="row">
+                        <div class="col-6">
+                          <button class="btn btn-block btn-facebook" type="submit"><span>facebook</span></button>
+                          <p *ngIf="isformValid" class="text-danger">
+                            Errors in the form
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
