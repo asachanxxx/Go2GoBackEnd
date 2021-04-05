@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <input class="form-control form-control-sm" [(value)] = "uuid" type="text" placeholder="YUSovcrD4aSQo7h0n68QwmtsiHV2">
+        <input class="form-control form-control-sm" [(value)] = "date" type="text" placeholder="">
+        <br>
+        <button type="button" (click) = "onClickShowLog()" class="btn btn-info">Show Logs</button>
+        <button type="button" (click) = "onClickDeleteLog()" class="btn btn-danger">Delete Logs</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header bg-dark">
+        Log Viewer
+      </div>
+      <div class="card-body">
+        <ng-template [ngIf]="dataLoaded">
+        <p *ngFor="let item of mySentences; let i = index">
+          {{item.logLine}}
+        </p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

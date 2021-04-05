@@ -6,15 +6,29 @@ import Driver from '../models/drivers.model';
 export class DriverService {
   private dbPath = '/drivers';
   tutorialsRef: AngularFireList<Driver> = null;
-  dbref;
   constructor(private db: AngularFireDatabase) {
     this.tutorialsRef  = db.list(this.dbPath);
-    this.dbref = db;
+
   }
 
   getAll(): AngularFireList<any> {
     return this.tutorialsRef;
   }
+
+  getAllTrips(key): AngularFireList<any> {
+    var dbpath2 = "/drivers/" + key + "/tripHistory";
+    console.log(dbpath2);
+    var tutorialsRefTrips  = this.db.list(dbpath2, ref=> ref.limitToLast(10));
+    return tutorialsRefTrips;
+  }
+
+  getAllPayments(key): AngularFireList<any> {
+    var dbpath2 = "/drivers/" + key + "/paymentHistory";
+    console.log(dbpath2);
+    var tutorialsRefTrips  = this.db.list(dbpath2, ref=> ref.limitToLast(10));
+    return tutorialsRefTrips;
+  }
+
 
   create(tutorial: Driver): any {
     return this.tutorialsRef.push(tutorial);
@@ -62,6 +76,20 @@ export class DriverService {
     return returnval;
   }
 
+  async GetAllDrivers() {
+    //  var driverList = null;
+    //  var val =  this.db.database.ref("/listTree/driverList").once('value', (snapshot) => {
+    //   driverList = snapshot;
+    //   snapshot.forEach((childSnapshot) => {
+    //     var childKey = childSnapshot.key;
+    //     var childData = childSnapshot.val();
+    //     console.log(childKey);
+    //     console.log(childData);
+
+    //   });
+    // });
+    return  this.db.database.ref("/listTree/driverList").once;
+  }
 
 // tslint:disable-next-line: eofline
 }

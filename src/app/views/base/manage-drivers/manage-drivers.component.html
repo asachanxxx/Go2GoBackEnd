@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-dark">
+            <h4 class="m0"> Search Drivers</h4>
+          </div>
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-dark">
+            <h4 class="m0">Drivers List</h4>
+          </div>
+          <div class="card-body">
+
+            <div class="card" *ngFor="let item of mySentences; let i = index">
+              <div class="card-header">
+                <h5> {{item.fullName}} - <span class="badge badge-primary">{{item.accountStatus}}</span> </h5>
+              </div>
+              <div class="card-Body p-2">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-3 col-sm-12">
+                        <p>Driver Key: <span style="color: #ef6c00;">{{item.key}}</span> </p>
+                      </div>
+                      <div class="col-md-4 col-sm-6">
+                        <p>Email: <span style="color: #ef6c00;">{{item.email}}</span> </p>
+                      </div>
+                      <div class="col-md-2 col-sm-6">
+                        <p>Phone Number: <span style="color: #ef6c00;">{{item.phoneNumber}}</span> </p>
+                      </div>
+                      <div class="col-md-2 col-sm-6">
+                        <p>NIC: <span style="color: #ef6c00;">{{item.nic}}</span> </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <button (click)="activateDriver_click(item.key)"> Activate Driver </button>
+                        <button (click)="bannedDriver_click(item.key)"> Banned Driver </button>
+                        <button (click)="viewTrips_click(item.key)"> View Trips </button>
+                        <button (click)="viewPayments_click(item.key)"> View Payments </button>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-dark">
+        <h4 class="m0">Trip List</h4>
+      </div>
+      <div class="card-body">
+        <div class="card" *ngFor="let tutorial of tripData; let i = index">
+          <div class="card-header">
+            <h4 class="mb-0">
+              <span >From</span>
+              <span style="color: #e65100;"><strong> {{ tutorial.destinationAddress }} </strong></span>
+              <span >To</span>
+              <span style="color: #e65100;"><strong> {{ tutorial.pickupAddress }}</strong></span>
+            </h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item p-1">
+                <span>Date</span>
+                <span style="color: #e65100;"><strong> {{ tutorial.date }} </strong></span>
+              </li>
+              <li class="list-group-item  p-1">
+                <span>Pickup </span>
+                <span style="color: #e65100;"><strong> {{ tutorial.pickup.latitude }} , {{ tutorial.pickup.longitude }} </strong></span>
+              </li>
+              <li class="list-group-item  p-1">
+                <span >Destination </span>
+                <span style="color: #e65100;"><strong> {{ tutorial.destination.latitude }} , {{ tutorial.destination.longitude }}
+                  </strong></span>
+              </li>
+              <li class="list-group-item  p-1">
+                <span >Distance </span>
+                <span style="color: #e65100;"><strong> {{ tutorial.directionDetails.distanceText }} </strong></span>
+
+                <span >Time </span>
+                <span style="color: #e65100;"><strong> {{ tutorial.directionDetails.durationText }} </strong></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="card">
+      <div class="card-header bg-dark">
+        <h4 class="m0">Payment Details</h4>
+      </div>
+      <div class="card-body">
+        <div class="card" *ngFor="let payment of paymentData; let i = index">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <span>Total Fare</span>
+              <span style="color: #e65100;"><strong> {{ payment.totalFare | number : '1.2-2' }} LKR </strong></span>
+              <span>Date</span>
+              <span style="color: #e65100;"><strong>  {{ payment.date |  date : "medium" }}</strong></span>
+            </h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+
+              <li class="list-group-item p-1">
+                <span >Transaction Id</span>
+                <span style="color: #e65100;">{{ payment.key }}</span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span >App Price</span>
+                <span style="color: #e65100;"><strong> {{ payment.appPrice | number : '1.2-2' }} LKR</strong></span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span >Commission</span>
+                <span style="color: #e65100;"><strong> {{ payment.commission | number : '1.2-2'}} LKR</strong></span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span >Company Payable</span>
+                <span style="color: #e65100;"><strong> {{ payment.companyPayable | number : '1.2-2' }} LKR</strong></span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span >KM Price</span>
+                <span style="color: #e65100;"><strong> {{ payment.kmPrice | number : '1.2-2' }} LKR</strong></span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span>Time Price</span>
+                <span style="color: #e65100;"><strong> {{ payment.timePrice | number : '1.2-2' }} LKR</strong></span>
+              </li>
+
+              <li class="list-group-item p-1">
+                <span>Distance</span>
+                <span style="color: #e65100;"><strong> {{ payment.directionDetails.distanceText }}</strong></span>
+                <span >Duration</span>
+                <span style="color: #e65100;"><strong> {{ payment.directionDetails.durationText }}</strong></span>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
