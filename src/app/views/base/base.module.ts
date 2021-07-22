@@ -10,6 +10,7 @@ import { BaseRoutingModule } from './base-routing.module';
 import { ManageDriversComponent } from './manage-drivers/manage-drivers.component';
 import { DriverService } from '../../services/drivers.service';
 import { LogViwerComponent } from './log-viwer/log-viwer.component';
+import { VoicerequestComponent } from './voicerequest/voicerequest.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { LogViwerComponent } from './log-viwer/log-viwer.component';
   ],
   declarations: [
     ManageDriversComponent,
-    LogViwerComponent
+    LogViwerComponent,
+    VoicerequestComponent
   ],
   providers:[
     DriverService

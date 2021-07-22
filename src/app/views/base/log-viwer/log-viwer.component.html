@@ -2,11 +2,57 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-body">
-        <input class="form-control form-control-sm" [(value)] = "uuid" type="text" placeholder="YUSovcrD4aSQo7h0n68QwmtsiHV2">
-        <input class="form-control form-control-sm" [(value)] = "date" type="text" placeholder="">
-        <br>
-        <button type="button" (click) = "onClickShowLog()" class="btn btn-info">Show Logs</button>
-        <button type="button" (click) = "onClickDeleteLog()" class="btn btn-danger">Delete Logs</button>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Universal Id</label>
+                <input class="form-control form-control-sm" [(ngModel)] = "uuid" type="text" placeholder="">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2">
+
+             <div>
+                <input id="customer" type="radio" value="customer"  (ngModelChange)="rdo_customerChange($event)" name="gender" ngModel>
+                <label for="female">Customer Logs</label>
+             </div>
+
+             <div>
+              <input id="driver" type="radio" value="driver" (ngModelChange)="rdo_driverChange($event)" name="gender" ngModel>
+              <label for="female">Driver Logs</label>
+             </div>
+              <div>
+              <input id="driver" type="radio" value="journal" (ngModelChange)="rdo_driverJournal($event)" name="gender" ngModel>
+              <label for="female">Journals</label>
+             </div>
+             <div>
+              <input id="customer" type="radio" value="gps"  (ngModelChange)="rdo_gpsChange($event)" name="gender" ngModel>
+              <label for="female">GPS </label>
+           </div>
+
+            </div>
+
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label for="example-month-input" class="col-2 col-form-label">Date </label>
+              <div class="col-10">
+                <input  [(ngModel)]="selectedDate"  [max]="dateConfig.max" [min]="dateConfig.min" class="form-control" type="date" value="2011-08" id="example-month-input">
+              </div>
+            </div>
+          </div>
+
+          </div>
+
+
+
+         <button type="button" (click) = "onClickShowLog()" class="btn btn-info">Show Logs</button>
+         <button type="button" (click) = "onClickDeleteLog()" class="btn btn-danger">Delete Logs</button>
+
+
+
+
       </div>
     </div>
   </div>
